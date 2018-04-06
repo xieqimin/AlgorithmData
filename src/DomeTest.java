@@ -12,5 +12,15 @@ class DomeTest {
         assertFalse(Dome.findNum(a,17));
 
     }
+    @Test
+    void doTest1(){
+        assertEquals(1,Dome.NumberOf1(8));
+        assertEquals(2,Dome.NumberOf1(9));
+        assertEquals(1,Dome.NumberOf1(64));
+        assertEquals(3,Dome.NumberOf1(13));
+        assertEquals(1,Dome.NumberOf1(1));
+        assertEquals(0,Dome.NumberOf1(0));
+
+    }
 
 }
