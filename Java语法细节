@@ -1,0 +1,19 @@
+由子类到基类查找方法
+public class A {
+    public void print(){
+        System.out.println("A");
+    }
+    public void ptintA(){
+        System.out.println("pa");
+    }
+    public static void main(String[] args){
+        A a=new B();
+        a.print();//output B
+        a.ptintA();//output pa
+    }
+}
+class B extends A{
+    public void print(){
+        System.out.println("B");
+    }
+}
