@@ -21,3 +21,5 @@ class B extends A{
 RuntimeException, Error 以及它们的子类都称为免检异常（unchecked exception)。 所有
 其他异常都称为必检异常（checked exception), 意思是指编译器会强制程序员检査并通过 trycatch 块处理它们， 或者在方法头进行声明。
 在方法头声明一个异常将在 12.4 节中讨论到。
+
+<%! ...  %>：只能放置全局变量、全局常量、类、函数
