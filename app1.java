@@ -62,9 +62,7 @@
             }
             //1.3 add进数组
             list.add(lineWord);
-//            if(n==words.length-1)
-//                break;
-//            //n++;
+
         }
 
         //2 return
