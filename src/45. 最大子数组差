@@ -1,0 +1,57 @@
+public static int maxDiffSubArrays(int[] nums) {
+        // write your code here
+        int n=nums.length;
+        int sum=0;
+        int minSum=0;
+        int maxSum=0;
+        int[] leftMin=new int[n];
+        int[] leftMax=new int[n];
+        int sMin=Integer.MAX_VALUE;
+        int sMax=Integer.MIN_VALUE;
+        for (int i=0;i<n;i++) {
+            sum+=nums[i];
+            sMax=Math.max(sMax,sum-minSum);
+            sMin=Math.min(sMin,sum-maxSum);
+//            if(i==0){
+//                maxSum=sum;
+//            }
+//            else {
+                maxSum=Math.max(maxSum,sum);
+            //}
+
+            minSum=Math.min(minSum,sum);
+            leftMax[i]=sMax;
+            leftMin[i]=sMin;
+        }
+        int[] rightMin=new int[n];
+        int[] rightMax=new int[n];
+        sMax=Integer.MIN_VALUE;
+        sMin=Integer.MAX_VALUE;
+        minSum=0;
+        maxSum=0;
+        sum=0;
+        for (int i=n-1;i>=0;i--) {
+            sum+=nums[i];
+            sMax=Math.max(sMax,sum-minSum);
+            sMin=Math.min(sMin,sum-maxSum);
+//            if(i==n-1){
+//                maxSum=sum;
+//            }
+//            else {
+                maxSum=Math.max(maxSum,sum);
+            //}
+            minSum=Math.min(minSum,sum);
+
+            //maxSum=Math.max(maxSum,sum);
+
+            rightMin[i]=sMin;
+            rightMax[i]=sMax;
+        }
+        int result=Integer.MIN_VALUE;
+        for (int i=0;i<n-1;i++) {
+            int nn=Math.max(leftMax[i]-rightMin[i+1],Math.abs(leftMin[i]-rightMax[i+1]));//有一个坑不能right-left,会重叠
+            result=Math.max(result,nn);
+
+        }
+        return result;
+    }
