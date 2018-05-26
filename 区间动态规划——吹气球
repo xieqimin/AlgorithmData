@@ -1,0 +1,27 @@
+class Solution {  
+public:  
+    /** 
+     * @param nums a list of integer 
+     * @return an integer, maximum coins 
+     */    
+    int maxCoins(vector<int>& nums) {  
+        // Write your code here  
+        nums.insert(nums.begin(), 1);  
+        nums.push_back(1);  
+        vector<vector<int>> dp(nums.size(), vector<int>(nums.size()));  
+          
+        int len = nums.size() - 2;  
+          
+        for(int i=1; i<=len; i++){  
+            for (int left = 1; left <= len - i + 1; left++) {  
+                int right = left + i - 1;  
+                for (int k = left; k <= left + i - 1; k++ ){  
+                    dp[left][right] = max(dp[left][right],  
+                        dp[left][k-1]+dp[k+1][right]+nums[left-1]*nums[k]*nums[right+1]);  
+                }  
+            }  
+        }  
+          
+        return dp[1][len];  
+    }  
+};  
