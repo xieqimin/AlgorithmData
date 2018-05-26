@@ -1,0 +1,33 @@
+class Solution {  
+public:  
+    /* 
+     * @param nums: an array of integers 
+     * @return: the maximun difference 
+     */  
+    int maximumGap(vector<int> nums) {  
+        if (nums.empty()) return 0;  
+        int mx = INT_MIN, mn = INT_MAX, n = nums.size();  
+        for (int i=0;i<n;i++) {  
+            mx = max(mx, nums[i]);  
+            mn = min(mn, nums[i]);  
+        }  
+        int size = (mx - mn) / n + 1;  
+        int bucket_nums = (mx - mn) / size + 1;  
+        vector<int> bucket_min(bucket_nums, INT_MAX);  
+        vector<int> bucket_max(bucket_nums, INT_MIN);  
+        set<int> s;  
+        for (int i=0;i<n;i++) {  
+            int idx = (nums[i] - mn) / size;  
+            bucket_min[idx] = min(bucket_min[idx], nums[i]);  
+            bucket_max[idx] = max(bucket_max[idx], nums[i]);  
+            s.insert(idx);//在set中插入元素  
+        }  
+        int pre = 0, res = 0;  
+        for (int i = 1; i < n; ++i) {  
+            if (!s.count(i)) continue;//查找键key的元素个数  
+            res = max(res, bucket_min[i] - bucket_max[pre]);  
+            pre = i;  
+        }  
+        return res;  
+    }  
+}; 
