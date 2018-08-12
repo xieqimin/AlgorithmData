@@ -12,72 +12,49 @@ class Solution {
         ListNode start=null;
         ListNode now=null;
         int f=0;
-        int sum;
+        int sum=0;
         while(true){
             if(l1!=null){
                 if(l2!=null){
                     sum=l1.val+l2.val+f;
-                    if(sum>=10){
-                        sum-=10;
-                        f=1;
-                    }
-                    else{
-                        f=0;
-                    }
                     l1=l1.next;
-                l2=l2.next;
+                    l2=l2.next;
                 }
                 else{
                     sum=l1.val+f;
-                    if(sum>=10){
-                        sum-=10;
-                        f=1;
-                    }
-                    else{
-                        f=0;
-                    }
                     l1=l1.next;
-                
                 }
-                if(start==null){
-                        start=new ListNode(sum);
-                        now=start;
-                    }
-                else{
-                        now.next=new ListNode(sum);
-                        now=now.next;
-                    }
                 
             }
             else{
                 if(l2!=null){
                      sum=l2.val+f;
-                    if(sum>=10){
-                        sum-=10;
-                        f=1;
-                    }
-                    else{
-                        f=0;
-                    }
-                    if(start==null){
-                        start=new ListNode(sum);
-                        now=start;
-                    }else{
-                        now.next=new ListNode(sum);
-                        now=now.next;
-                    }
-                    
-                l2=l2.next;
+                     l2=l2.next;
                 }
                 else{
                     break;
                 }
                 
             }
+            if(sum>=10){
+                sum-=10;
+                f=1;
+                }
+            else{
+                f=0;
+            }
+            if(start==null){
+                start=new ListNode(sum);
+                now=start;
+            }else{
+                now.next=new ListNode(sum);
+                now=now.next;
+            }
+            
         }
         if(f==1){
             now.next=new ListNode(f);
-                        now=now.next;
+            now=now.next;
         }
         return start;
     }
