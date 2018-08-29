@@ -1,2 +1,2 @@
-[深入理解Java枚举类型(enum)](https://blog.csdn.net/javazejian/article/details/71333103)
-[ReentrantLock 原理深度解析 --- 基于jdk1.8](https://blog.csdn.net/qq_22956867/article/details/79257998)
+- [深入理解Java枚举类型(enum)](https://blog.csdn.net/javazejian/article/details/71333103)
+- [ReentrantLock 原理深度解析 --- 基于jdk1.8](https://blog.csdn.net/qq_22956867/article/details/79257998)
